@@ -1,24 +1,26 @@
 package com.tabraiz.imagecaroseltask.caroselVideo.views;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.tabraiz.imagecaroseltask.R;
+import com.tabraiz.imagecaroseltask.base.views.BaseFragment;
+import com.tabraiz.imagecaroseltask.caroselVideo.viewmodel.VideoPlayerComponent;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link CarouselVideoFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link CarouselVideoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class CarouselVideoFragment extends Fragment {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+import static com.tabraiz.imagecaroseltask.common.Constants.VIDEO_STREAMING_URL;
+
+
+public class CarouselVideoFragment extends BaseFragment {
+
+
+    @BindView(R.id.media_player_carousel)
+    SimpleExoPlayerView playerView;
 
     public CarouselVideoFragment() {
         // Required empty public constructor
@@ -40,6 +42,10 @@ public class CarouselVideoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_carousel_video, container, false);
-    }
+        View view = inflater.inflate(R.layout.fragment_carousel_video, container, false);
+        unbinder = ButterKnife.bind(this, view);
+        if(savedInstanceState == null){
+            getLifecycle().addObserver(new VideoPlayerComponent(getActivity().getApplicationContext(), playerView, VIDEO_STREAMING_URL));
+        }
+        return view;    }
 }

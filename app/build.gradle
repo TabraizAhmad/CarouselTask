@@ -16,10 +16,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding{
+        enabled=true
+    }
 }
 
 dependencies {
     final BUTTER_KNIFE_VERSION = '8.8.1'
+    final EXPO_PLAYER_VERSION = 'r2.4.3'
+    final LIFECYCLE_VERSION = '1.1.1'
+
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -27,6 +33,12 @@ dependencies {
     implementation 'com.android.support:support-v4:26.1.0'
     testImplementation 'junit:junit:4.12'
     implementation "com.jakewharton:butterknife:$BUTTER_KNIFE_VERSION"
+    implementation "com.google.android.exoplayer:exoplayer:$EXPO_PLAYER_VERSION"
+
+    implementation "android.arch.lifecycle:runtime:$LIFECYCLE_VERSION"
+    implementation "android.arch.lifecycle:extensions:$LIFECYCLE_VERSION"
+    annotationProcessor "android.arch.lifecycle:compiler:$LIFECYCLE_VERSION"
+
     annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_VERSION"
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
