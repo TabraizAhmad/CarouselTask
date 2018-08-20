@@ -7,4 +7,5 @@
     <string name="error_instantiating_decoder">Unable to instantiate decoder <xliff:g id="decoder_name">%1$s</xliff:g></string>
     <string name="left">Left</string>
     <string name="right">Right</string>
+    <string name="slider_image_des">Slider image</string>
 </resources>

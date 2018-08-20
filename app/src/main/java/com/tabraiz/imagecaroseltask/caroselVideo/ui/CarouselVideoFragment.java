@@ -1,6 +1,9 @@
 package com.tabraiz.imagecaroseltask.caroselVideo.ui;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +11,9 @@ import android.view.ViewGroup;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.tabraiz.imagecaroseltask.R;
 import com.tabraiz.imagecaroseltask.base.views.BaseFragment;
+import com.tabraiz.imagecaroseltask.caroselVideo.adapter.ImageCarouselAdapter;
 import com.tabraiz.imagecaroseltask.caroselVideo.videolifecycleobserver.VideoPlayerComponent;
+import com.tabraiz.imagecaroseltask.common.Utils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,6 +27,9 @@ public class CarouselVideoFragment extends BaseFragment {
     @BindView(R.id.media_player_carousel)
     SimpleExoPlayerView playerView;
 
+    @BindView(R.id.recycler_view_carousel)
+    RecyclerView carouselRecyclerView;
+    private ImageCarouselAdapter imageCarouselAdapter;
 
     public CarouselVideoFragment() {
         // Required empty public constructor
@@ -29,13 +37,13 @@ public class CarouselVideoFragment extends BaseFragment {
 
 
     public static CarouselVideoFragment newInstance() {
-        CarouselVideoFragment fragment = new CarouselVideoFragment();
-        return fragment;
+        return new CarouselVideoFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        imageCarouselAdapter = new ImageCarouselAdapter(Utils.getImageUriList());
 
     }
 
@@ -48,5 +56,15 @@ public class CarouselVideoFragment extends BaseFragment {
         if(savedInstanceState == null){
             getLifecycle().addObserver(new VideoPlayerComponent(getActivity().getApplicationContext(), playerView, VIDEO_STREAMING_URL));
         }
-        return view;    }
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        carouselRecyclerView.setLayoutManager(layoutManager);
+        carouselRecyclerView.setAdapter(imageCarouselAdapter);
+    }
 }
