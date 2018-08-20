@@ -111,6 +111,7 @@ public class VideoPlayerComponent implements LifecycleObserver, ExoPlayer.EventL
             simpleExoPlayerView.setUseController(false);
 
             player.setPlayWhenReady(true);
+            player.setVolume(0);
             boolean haveResumePosition = resumeWindow != C.INDEX_UNSET;
             if (haveResumePosition) {
                 Log.d(TAG, "Have Resume position true!" + resumePosition);
