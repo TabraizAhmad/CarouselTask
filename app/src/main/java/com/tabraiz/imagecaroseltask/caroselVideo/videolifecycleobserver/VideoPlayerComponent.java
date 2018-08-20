@@ -1,4 +1,4 @@
-package com.tabraiz.imagecaroseltask.caroselVideo.viewmodel;
+package com.tabraiz.imagecaroseltask.caroselVideo.videolifecycleobserver;
 
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;

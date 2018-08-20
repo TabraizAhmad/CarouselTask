@@ -1,4 +1,4 @@
-package com.tabraiz.imagecaroseltask.caroselVideo.views;
+package com.tabraiz.imagecaroseltask.caroselVideo.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.tabraiz.imagecaroseltask.R;
 import com.tabraiz.imagecaroseltask.base.views.BaseFragment;
-import com.tabraiz.imagecaroseltask.caroselVideo.viewmodel.VideoPlayerComponent;
+import com.tabraiz.imagecaroseltask.caroselVideo.videolifecycleobserver.VideoPlayerComponent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

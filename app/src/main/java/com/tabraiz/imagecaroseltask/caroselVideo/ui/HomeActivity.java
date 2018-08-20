@@ -1,4 +1,4 @@
-package com.tabraiz.imagecaroseltask.caroselVideo.views;
+package com.tabraiz.imagecaroseltask.caroselVideo.ui;
 
 import android.os.Bundle;
 
