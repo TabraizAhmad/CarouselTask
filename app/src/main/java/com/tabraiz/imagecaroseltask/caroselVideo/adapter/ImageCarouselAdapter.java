@@ -18,6 +18,8 @@ import butterknife.ButterKnife;
 
 public class ImageCarouselAdapter extends RecyclerView.Adapter<ImageCarouselAdapter.ImageViewHolder> {
 
+    public final int LOOPING_IMAGE_THRESHOLD = 200;
+
     private List<String> urlList =new ArrayList<>();
 
     public ImageCarouselAdapter(List<String> urls){
@@ -33,12 +35,12 @@ public class ImageCarouselAdapter extends RecyclerView.Adapter<ImageCarouselAdap
 
     @Override
     public void onBindViewHolder(@NonNull ImageCarouselAdapter.ImageViewHolder holder, int position) {
-        PicassoClient.downloadImage(urlList.get(position),holder.imageView);
+        PicassoClient.downloadImage(urlList.get(position % urlList.size()),holder.imageView);
     }
 
     @Override
     public int getItemCount() {
-        return urlList.size();
+        return urlList.size()*LOOPING_IMAGE_THRESHOLD;
     }
 
     class ImageViewHolder extends RecyclerView.ViewHolder {
