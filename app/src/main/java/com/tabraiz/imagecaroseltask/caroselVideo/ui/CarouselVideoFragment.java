@@ -22,6 +22,7 @@ public class CarouselVideoFragment extends BaseFragment {
     @BindView(R.id.media_player_carousel)
     SimpleExoPlayerView playerView;
 
+
     public CarouselVideoFragment() {
         // Required empty public constructor
     }
