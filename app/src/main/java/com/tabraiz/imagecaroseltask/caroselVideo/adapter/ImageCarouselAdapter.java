@@ -1,7 +1,10 @@
 package com.tabraiz.imagecaroseltask.caroselVideo.adapter;
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +22,14 @@ import butterknife.ButterKnife;
 public class ImageCarouselAdapter extends RecyclerView.Adapter<ImageCarouselAdapter.ImageViewHolder> {
 
     public final int LOOPING_IMAGE_THRESHOLD = 200;
+    public final int ITEMS_PER_ROW = 3;
 
     private List<String> urlList =new ArrayList<>();
 
-    public ImageCarouselAdapter(List<String> urls){
-        urlList = urls;
+    private Context context;
+    public ImageCarouselAdapter(Context context,List<String> urls){
+        this.urlList = urls;
+        this.context = context;
     }
 
     @NonNull
@@ -35,6 +41,11 @@ public class ImageCarouselAdapter extends RecyclerView.Adapter<ImageCarouselAdap
 
     @Override
     public void onBindViewHolder(@NonNull ImageCarouselAdapter.ImageViewHolder holder, int position) {
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+
+        holder.itemView.getLayoutParams().width = displaymetrics.widthPixels / ITEMS_PER_ROW;
+
         PicassoClient.downloadImage(urlList.get(position % urlList.size()),holder.imageView);
     }
 

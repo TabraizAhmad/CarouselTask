@@ -1,13 +1,19 @@
 package com.tabraiz.imagecaroseltask.caroselVideo.ui;
 
+import android.content.Context;
+import android.content.res.Configuration;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
@@ -39,6 +45,7 @@ public class CarouselVideoFragment extends BaseFragment {
     Button rightButton;
 
     private ImageCarouselAdapter imageCarouselAdapter;
+    private boolean orientationLand;
 
 
     public CarouselVideoFragment() {
@@ -53,7 +60,7 @@ public class CarouselVideoFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        imageCarouselAdapter = new ImageCarouselAdapter(Utils.getImageUriList());
+        imageCarouselAdapter = new ImageCarouselAdapter( getActivity(), Utils.getImageUriList() );
 
     }
 
@@ -90,5 +97,10 @@ public class CarouselVideoFragment extends BaseFragment {
         LinearLayoutManager linearLayoutManager = (LinearLayoutManager) carouselRecyclerView.getLayoutManager();
         linearLayoutManager.scrollToPosition(linearLayoutManager.findFirstVisibleItemPosition() - 1);
     }
-    
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        carouselRecyclerView.getAdapter().notifyDataSetChanged();
+    }
 }
