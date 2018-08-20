@@ -21,8 +21,8 @@ import butterknife.ButterKnife;
 
 public class ImageCarouselAdapter extends RecyclerView.Adapter<ImageCarouselAdapter.ImageViewHolder> {
 
-    public final int LOOPING_IMAGE_THRESHOLD = 200;
-    public final int ITEMS_PER_ROW = 3;
+    private final int LOOPING_IMAGE_THRESHOLD = 200;
+    private final int ITEMS_PER_ROW = 3;
 
     private List<String> urlList =new ArrayList<>();
 

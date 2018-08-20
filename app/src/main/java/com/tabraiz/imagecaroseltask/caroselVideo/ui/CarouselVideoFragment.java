@@ -1,19 +1,14 @@
 package com.tabraiz.imagecaroseltask.caroselVideo.ui;
 
-import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
@@ -45,7 +40,6 @@ public class CarouselVideoFragment extends BaseFragment {
     Button rightButton;
 
     private ImageCarouselAdapter imageCarouselAdapter;
-    private boolean orientationLand;
 
 
     public CarouselVideoFragment() {

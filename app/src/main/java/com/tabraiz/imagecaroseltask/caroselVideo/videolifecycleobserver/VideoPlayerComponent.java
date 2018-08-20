@@ -35,6 +35,7 @@ import com.tabraiz.imagecaroseltask.R;
 public class VideoPlayerComponent implements LifecycleObserver, ExoPlayer.EventListener {
 
     private static final String TAG = "VideoPlayerComponent";
+    private static final float VOLUME_SILENT = 0;
     private final Context context;
     private final SimpleExoPlayerView simpleExoPlayerView;
     private final String videoUrl;
@@ -111,7 +112,7 @@ public class VideoPlayerComponent implements LifecycleObserver, ExoPlayer.EventL
             simpleExoPlayerView.setUseController(false);
 
             player.setPlayWhenReady(true);
-            player.setVolume(0);
+            player.setVolume(VOLUME_SILENT);
             boolean haveResumePosition = resumeWindow != C.INDEX_UNSET;
             if (haveResumePosition) {
                 Log.d(TAG, "Have Resume position true!" + resumePosition);
