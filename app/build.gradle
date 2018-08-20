@@ -25,6 +25,7 @@ dependencies {
     final BUTTER_KNIFE_VERSION = '8.8.1'
     final EXPO_PLAYER_VERSION = 'r2.4.3'
     final LIFECYCLE_VERSION = '1.1.1'
+    final SUPPORT_LIBRARY_VERSION = '26.1.0'
 
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -40,6 +41,8 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:$LIFECYCLE_VERSION"
 
     annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_VERSION"
+
+    implementation "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

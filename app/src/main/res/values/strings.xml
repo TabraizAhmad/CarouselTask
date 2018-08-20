@@ -22,4 +22,6 @@
     <string name="error_unsupported_video">Media includes video tracks, but none are playable by this device</string>
 
     <string name="error_unsupported_audio">Media includes audio tracks, but none are playable by this device</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
 </resources>
