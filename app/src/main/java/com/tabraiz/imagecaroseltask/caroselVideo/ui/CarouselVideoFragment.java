@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.tabraiz.imagecaroseltask.R;
@@ -18,6 +19,7 @@ import com.tabraiz.imagecaroseltask.common.Utils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.tabraiz.imagecaroseltask.common.Constants.VIDEO_STREAMING_URL;
 
@@ -30,7 +32,14 @@ public class CarouselVideoFragment extends BaseFragment {
 
     @BindView(R.id.recycler_view_carousel)
     RecyclerView carouselRecyclerView;
+
+    @BindView(R.id.left_btn_carousel)
+    Button leftButton;
+    @BindView(R.id.right_btn_carousel)
+    Button rightButton;
+
     private ImageCarouselAdapter imageCarouselAdapter;
+
 
     public CarouselVideoFragment() {
         // Required empty public constructor
@@ -69,4 +78,17 @@ public class CarouselVideoFragment extends BaseFragment {
         carouselRecyclerView.setAdapter(imageCarouselAdapter);
         carouselRecyclerView.scrollToPosition(imageCarouselAdapter.getItemCount() / 2);
     }
+
+    @OnClick(R.id.right_btn_carousel)
+    public void moveCarouselImageRight(){
+        LinearLayoutManager linearLayoutManager = (LinearLayoutManager) carouselRecyclerView.getLayoutManager();
+        linearLayoutManager.scrollToPosition(linearLayoutManager.findLastVisibleItemPosition() + 1);
+    }
+
+    @OnClick(R.id.left_btn_carousel)
+    public void moveCarouselImageLeft(){
+        LinearLayoutManager linearLayoutManager = (LinearLayoutManager) carouselRecyclerView.getLayoutManager();
+        linearLayoutManager.scrollToPosition(linearLayoutManager.findFirstVisibleItemPosition() - 1);
+    }
+    
 }
